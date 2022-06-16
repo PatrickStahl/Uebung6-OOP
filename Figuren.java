@@ -110,6 +110,9 @@ class Rectangle extends Figure implements MobileObject
             System.out.println("disjoint");
         }
 
+
+        //ich weiß noch nicht ob die alligned methoden stimmen, könnt die gerne mal ausprobieren und mir bescheid sagen
+
         //rechts
         if((x+height == rectangle.x) && ((y < rectangle.y + rectangle.height) || (y+height > rectangle.y)))
         {
