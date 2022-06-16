@@ -161,14 +161,20 @@ class Roman
         Roman result = new Roman(intValue);
         result.intValue = rom.intValue + intValue;
         result.intToRoman();        
+        System.out.println(intValue + " (" + stringValue + ")" + "  +  " + rom.intValue + " (" + rom.stringValue + ")" + "  =  " + result.intValue + " (" + result.stringValue + ")");
         return result;
     }
 
     public Roman substract(Roman rom)
     {
         Roman result = new Roman(intValue);
-        result.intValue = intValue - rom.intValue ;
+        result.intValue = intValue - rom.intValue;
+        if(result.intValue < 0)
+        {
+            result.intValue = 0;
+        }
         result.intToRoman();
+        System.out.println(intValue + " (" + stringValue + ")" + "  -  " + rom.intValue + " (" + rom.stringValue + ")" + "  =  " + result.intValue + " (" + result.stringValue + ")");
         return result;
     }
 
@@ -177,6 +183,7 @@ class Roman
         Roman result = new Roman(intValue);
         result.intValue = rom.intValue * intValue;
         result.intToRoman();
+        System.out.println(intValue + " (" + stringValue + ")" + "  *  " + rom.intValue + " (" + rom.stringValue + ")" + "  =  " + result.intValue + " (" + result.stringValue + ")");
         return result;
     }
 
@@ -185,6 +192,7 @@ class Roman
         Roman result = new Roman(intValue);
         result.intValue = intValue / rom.intValue;
         result.intToRoman();
+        System.out.println(intValue + " (" + stringValue + ")" + "  /  " + rom.intValue + " (" + rom.stringValue + ")" + "  =  " + result.intValue + " (" + result.stringValue + ")");
         return result;
     }
 
@@ -205,12 +213,13 @@ class Roman
     {
         if((obj != null) && (obj instanceof Roman))
         {
-            Roman rec = (Roman) obj;
-            if(hashCode() == rec.hashCode())
+            if(hashCode() == ((Roman) obj).hashCode())
             {
+                System.out.println("true");
                 return true;
             }
         }
+        System.out.println("false");
         return false;
     }
     
@@ -221,13 +230,14 @@ public class Zahlen
     public static void main(String[] args) 
     {
         Roman test1 = new Roman("MMXIV");
-        Roman test2 = new Roman(2022);
+        Roman test2 = new Roman(20);
+        Roman test3 = new Roman(1011);
+        Roman test4 = new Roman("MXI");
         test1.add(test2);
         test1.substract(test2);
-        System.out.println(test1.toString());
-        Roman test3 = new Roman(1011);
-        Roman test4 = new Roman(1011);
-        System.out.println(test3.equals(test4));
-        System.out.println(test3.add(test4));
+        test2.multiply(test2);
+        test1.divide(test3);
+        test3.equals(test4);
+        System.out.println(test1);
     }
 }
