@@ -109,6 +109,31 @@ class Rectangle extends Figure implements MobileObject
         {
             System.out.println("disjoint");
         }
+
+        //rechts
+        if((x+height == rectangle.x) && ((y < rectangle.y + rectangle.height) || (y+height > rectangle.y)))
+        {
+            System.out.println("alligned");
+        }
+
+        //drüber
+        if(((y+height==rectangle.y) && ((rectangle.x + rectangle.height > x) || (x+ height > rectangle.x))))
+        {
+            System.out.println("alligned");
+        }
+
+        //drunter
+        if((y == rectangle.y + rectangle.height) && ((x < rectangle.x + rectangle.width) || (x + width > rectangle.x)))
+        {
+            System.out.println("alligned");
+        }
+
+        //links
+        if((rectangle.x + rectangle.width == x) && ((y + height > rectangle.y) || (rectangle.y + rectangle.height > y)))
+        {
+            System.out.println("alligned");
+        }
+
     }   
 }
 

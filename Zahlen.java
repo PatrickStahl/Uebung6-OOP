@@ -1,6 +1,6 @@
 class Roman
 {
-    protected int intValue;
+    public int intValue;
     protected String stringValue;
 
     Roman(String string)
@@ -156,42 +156,64 @@ class Roman
         stringValue = str;
     }
 
-    public void add(Roman rom)
+    public Roman add(Roman rom)
     { 
-        intValue = rom.intValue + intValue;
-        intToRoman();        
+        Roman result = new Roman(intValue);
+        result.intValue = rom.intValue + intValue;
+        result.intToRoman();        
+        return result;
     }
 
-    public void substract(Roman rom)
+    public Roman substract(Roman rom)
     {
-        intValue = intValue - rom.intValue ;
-        intToRoman();
+        Roman result = new Roman(intValue);
+        result.intValue = intValue - rom.intValue ;
+        result.intToRoman();
+        return result;
     }
 
-    public void multiply(Roman rom)
+    public Roman multiply(Roman rom)
     {
-        intValue = rom.intValue * intValue;
-        intToRoman();
+        Roman result = new Roman(intValue);
+        result.intValue = rom.intValue * intValue;
+        result.intToRoman();
+        return result;
     }
 
     public Roman divide(Roman rom)
     {
-        //hier noch neue tempwerte anlegen
         Roman result = new Roman(intValue);
         result.intValue = intValue / rom.intValue;
         result.intToRoman();
         return result;
     }
 
+    @Override
     public String toString()
     {
         return "Die römische Zahl " + stringValue + " entspricht " + intValue;
     }
 
+    @Override
     public int hashCode()
     {
         return intValue;
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if((obj != null) && (obj instanceof Roman))
+        {
+            Roman rec = (Roman) obj;
+            if(hashCode() == rec.hashCode())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
 
 public class Zahlen
@@ -203,5 +225,9 @@ public class Zahlen
         test1.add(test2);
         test1.substract(test2);
         System.out.println(test1.toString());
+        Roman test3 = new Roman(1011);
+        Roman test4 = new Roman(1011);
+        System.out.println(test3.equals(test4));
+        System.out.println(test3.add(test4));
     }
 }
