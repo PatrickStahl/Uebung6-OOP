@@ -114,13 +114,13 @@ class Rectangle extends Figure implements MobileObject
         //ich weiß noch nicht ob die alligned methoden stimmen, könnt die gerne mal ausprobieren und mir bescheid sagen
 
         //rechts
-        if((x+height == rectangle.x) && ((y < rectangle.y + rectangle.height) || (y+height > rectangle.y)))
+        if((x+width == rectangle.x) && ((y < rectangle.y + rectangle.height) || (y+height > rectangle.y)))
         {
             System.out.println("alligned");
         }
 
         //drüber
-        if(((y+height==rectangle.y) && ((rectangle.x + rectangle.height > x) || (x+ height > rectangle.x))))
+        if(((y+height==rectangle.y) && ((rectangle.x + rectangle.width > x) || (x+ width > rectangle.x))))
         {
             System.out.println("alligned");
         }
@@ -147,7 +147,7 @@ public class Figuren
         Rectangle rectangle1 = new Rectangle(3, 4, 5, 6);
         //rectangle1.increase(3);
         rectangle1.print();    
-        Rectangle rectangle2 = new Rectangle(10, 20, 12, 18);
+        Rectangle rectangle2 = new Rectangle(8, 4, 12, 5);
         rectangle2.print();
         rectangle1.relation(rectangle2);
     }
